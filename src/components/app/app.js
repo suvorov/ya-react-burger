@@ -4,7 +4,7 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 
-function App() {
+const App = () => {
   const url = 'https://norma.nomoreparties.space/api/ingredients';
   const [ingredients, setIngredients] = useState([]);
 
@@ -16,12 +16,12 @@ function App() {
   }, []);
 
   return (
-    <div className={ styles.app }>
+    <div className={styles.app}>
       <AppHeader />
-      <BurgerIngredients ingredients={ ingredients } />
+      <BurgerIngredients ingredients={ingredients} />
       <BurgerConstructor />
     </div>
   );
-}
+};
 
 export default App;
