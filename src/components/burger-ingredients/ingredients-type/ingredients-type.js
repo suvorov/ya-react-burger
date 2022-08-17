@@ -11,7 +11,7 @@ const IngredientsType = ({
       <h3 className='mmt-10 mb-6'>
         {title}
       </h3>
-      <div>
+      <div className={styles.container}>
         {ingredients.map((item) => (
           <IngredientCard
             key={item._id}

@@ -1,6 +1,14 @@
 .app {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #29323c;
+}
+
+.content {
+  display: flex;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }

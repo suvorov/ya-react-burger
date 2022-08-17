@@ -26,8 +26,14 @@
   src: url("./fonts/iceland/Iceland-Regular.ttf") format("ttf");
 }
 
-body {
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
+}
+
+body {
+  min-height: 100vh;
   font-family: 'JetBrains Mono', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
