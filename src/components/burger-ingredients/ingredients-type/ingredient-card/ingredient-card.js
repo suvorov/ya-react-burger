@@ -8,7 +8,7 @@ const IngredientCard = ({
   return (
     <>
       <img src={ingredient.image} alt={ingredient.name} />
-      <p>{ingredient.price} <CurrencyIcon type="primary" /></p>
+      <p className={styles.price}>{ingredient.price} <CurrencyIcon type="primary" /></p>
       <p>{ingredient.name}</p>
     </>
   );

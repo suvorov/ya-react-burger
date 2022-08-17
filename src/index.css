@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-Bold.ttf") format("ttf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-Light.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-LightItalic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/iceland/Iceland-Regular.ttf") format("ttf");
+}
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
