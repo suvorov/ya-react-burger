@@ -15,6 +15,19 @@
   width: calc(var(--main-panel-width)*2 + var(--main-padding));
 }
 
+.title p {
+  /*margin: 40px 0 20px 0;*/
+}
+
+.tabs {
+  display: flex;
+  width: var(--main-panel-width);
+}
+
+.tabs > div {
+  flex: 1;
+}
+
 .content {
   display: flex;
   overflow: auto;

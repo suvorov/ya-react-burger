@@ -9,11 +9,11 @@ const AppHeader = () => {
         <div className={styles.left_links}>
           <nav>
             <BurgerIcon type="primary" />
-            <a className='text' href="#constructor">Конструктор</a>
+            <a href="#constructor">Конструктор</a>
           </nav>
           <nav className={styles.inactive}>
             <ListIcon type="secondary" />
-            <a className='text' href="#orders">Лента заказов</a>
+            <a href="#orders">Лента заказов</a>
           </nav>
         </div>
         <div className={styles.logo}>
@@ -22,7 +22,7 @@ const AppHeader = () => {
         <div className={styles.profile}>
           <nav className={styles.inactive}>
             <ProfileIcon type="secondary" />
-            <a className='text' href="#profile">Личный кабинет</a>
+            <a href="#profile">Личный кабинет</a>
           </nav>
         </div>
       </div>

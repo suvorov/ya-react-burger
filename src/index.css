@@ -29,6 +29,7 @@
 :root {
   --main-panel-width: 600px;
   --main-padding: 40px;
+  --color-text: #f2f2f3;
   --color-dark-grey: #8585ad;
 }
 
@@ -42,8 +43,4 @@ body {
   font-family: 'JetBrains Mono', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.text {
-  color: #f2f2f3;
 }
