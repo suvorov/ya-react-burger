@@ -1,14 +1,24 @@
 .app {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
-  background-color: #29323c;
+  padding: var(--main-padding);
+  background-color: #131316;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  width: calc(var(--main-panel-width)*2 + var(--main-padding));
 }
 
 .content {
   display: flex;
   overflow: auto;
-  width: 100%;
+  column-gap: var(--main-padding);
+  width: calc(var(--main-panel-width)*2 + var(--main-padding));
   height: 100%;
 }

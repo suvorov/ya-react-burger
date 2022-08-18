@@ -5,10 +5,27 @@ import { BurgerIcon, ListIcon, Logo, ProfileIcon } from '@ya.praktikum/react-dev
 const AppHeader = () => {
   return (
     <header className={styles.header}>
-      <BurgerIcon type="primary" /> Конструктор
-      <ListIcon type="primary" /> Лента заказов
-      <Logo />
-      <ProfileIcon type="primary" /> Личный кабинет
+      <div className={styles.wrapper}>
+        <div className={styles.left_links}>
+          <nav>
+            <BurgerIcon type="primary" />
+            <a className='text' href="#constructor">Конструктор</a>
+          </nav>
+          <nav className={styles.inactive}>
+            <ListIcon type="secondary" />
+            <a className='text' href="#orders">Лента заказов</a>
+          </nav>
+        </div>
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        <div className={styles.profile}>
+          <nav className={styles.inactive}>
+            <ProfileIcon type="secondary" />
+            <a className='text' href="#profile">Личный кабинет</a>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 };

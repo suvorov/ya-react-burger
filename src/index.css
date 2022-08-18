@@ -26,6 +26,12 @@
   src: url("./fonts/iceland/Iceland-Regular.ttf") format("ttf");
 }
 
+:root {
+  --main-panel-width: 600px;
+  --main-padding: 40px;
+  --color-dark-grey: #8585ad;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -33,8 +39,11 @@
 }
 
 body {
-  min-height: 100vh;
   font-family: 'JetBrains Mono', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.text {
+  color: #f2f2f3;
 }

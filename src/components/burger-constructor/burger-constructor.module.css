@@ -1,9 +1,8 @@
 .section {
   display: flex;
-  flex: 1;
   overflow: auto;
   flex-wrap: wrap;
-  color: white;
   align-items: center;
   justify-content: center;
+  width: var(--main-panel-width);
 }

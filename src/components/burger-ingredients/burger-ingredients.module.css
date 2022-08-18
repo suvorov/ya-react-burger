@@ -1,14 +1,8 @@
 .section {
   display: flex;
-  flex: 1;
   overflow: auto;
   flex-wrap: wrap;
-  color: white;
   align-items: center;
   justify-content: center;
-}
-
-.container {
-  overflow: auto;
-  height: 100%;
+  width: var(--main-panel-width);
 }

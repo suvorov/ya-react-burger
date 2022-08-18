@@ -24,11 +24,13 @@ const App = () => {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <h1>Соберите бургер</h1>
-      <div style={{display: 'flex'}}>
-        <Tab value="one" active={current === 'one'} onClick={onCurrent}>Булки</Tab>
-        <Tab value="two" active={current === 'two'} onClick={onCurrent}>Соусы</Tab>
-        <Tab value="three" active={current === 'three'} onClick={onCurrent}>Начинки</Tab>
+      <div className={styles.title}>
+        <h1>Соберите бургер</h1>
+        <div style={{display: 'flex'}}>
+          <Tab value="one" active={current === 'one'} onClick={onCurrent}>Булки</Tab>
+          <Tab value="two" active={current === 'two'} onClick={onCurrent}>Соусы</Tab>
+          <Tab value="three" active={current === 'three'} onClick={onCurrent}>Начинки</Tab>
+        </div>
       </div>
       <div className={styles.content}>
         <BurgerIngredients ingredients={ingredients} />
