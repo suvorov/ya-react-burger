@@ -5,8 +5,22 @@
   align-items: center;
   justify-content: left;
   width: var(--main-panel-width);
+  scrollbar-width: thin;
 }
 
 .section > div {
   width: 100%;
+}
+
+.section > :first-child {
+  margin-top: 0;
+}
+
+.section::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--color-dark);
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-grey);
 }

@@ -4,7 +4,7 @@
   justify-content: center;
   width: 100%;
   padding: 16px;
-  background-color: #1c1c21;
+  background-color: var(--color-bg2);
 }
 
 .wrapper {
@@ -43,8 +43,4 @@ nav {
 nav a {
   text-decoration: none;
   color: var(--color-text);
-}
-
-.inactive a {
-  color: var(--color-dark-grey);
 }

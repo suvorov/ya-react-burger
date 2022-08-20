@@ -6,13 +6,14 @@
   height: 100vh;
   width: 100%;
   padding: var(--main-padding);
-  background-color: #131316;
+  background-color: var(--color-bg);
 }
 
 .title {
   display: flex;
   flex-direction: column;
   width: calc(var(--main-panel-width)*2 + var(--main-padding));
+  margin-bottom: var(--main-padding);
 }
 
 .tabs {

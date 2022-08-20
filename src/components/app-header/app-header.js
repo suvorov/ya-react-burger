@@ -11,18 +11,18 @@ const AppHeader = () => {
             <BurgerIcon type="primary" />
             <a href="#constructor">Конструктор</a>
           </nav>
-          <nav className={styles.inactive}>
+          <nav>
             <ListIcon type="secondary" />
-            <a href="#orders">Лента заказов</a>
+            <a href="#orders" className="text_color_inactive">Лента заказов</a>
           </nav>
         </div>
         <div className={styles.logo}>
           <Logo />
         </div>
         <div className={styles.profile}>
-          <nav className={styles.inactive}>
+          <nav>
             <ProfileIcon type="secondary" />
-            <a href="#profile">Личный кабинет</a>
+            <a href="#profile" className="text_color_inactive">Личный кабинет</a>
           </nav>
         </div>
       </div>
