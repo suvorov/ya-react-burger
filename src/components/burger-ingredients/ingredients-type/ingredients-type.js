@@ -8,9 +8,9 @@ const IngredientsType = ({
 }) => {
   return (
     <>
-      <h3 className='mmt-10 mb-6'>
+      <div className='text text_type_main-medium mb-6 mt-10'>
         {title}
-      </h3>
+      </div>
       <div className={styles.container}>
         {ingredients.map((item) => (
           <IngredientCard

@@ -18,7 +18,6 @@
 .tabs {
   display: flex;
   width: var(--main-panel-width);
-  margin-bottom: var(--main-padding);
 }
 
 .tabs > div {

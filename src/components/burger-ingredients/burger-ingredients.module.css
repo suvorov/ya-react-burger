@@ -3,6 +3,10 @@
   overflow: auto;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   width: var(--main-panel-width);
+}
+
+.section > div {
+  width: 100%;
 }

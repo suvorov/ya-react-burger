@@ -6,11 +6,18 @@ const IngredientCard = ({
   ingredient
 }) => {
   return (
-    <>
+    <div className={styles.card}>
       <img src={ingredient.image} alt={ingredient.name} />
-      <p className={styles.price}>{ingredient.price} <CurrencyIcon type="primary" /></p>
-      <p>{ingredient.name}</p>
-    </>
+      <div className={styles.price}>
+        <p className="text text_type_digits-default mr-2">
+          {ingredient.price}
+        </p>
+        <CurrencyIcon type="primary" />
+      </div>
+      <p className={styles.name}>
+        {ingredient.name}
+      </p>
+    </div>
   );
 };
 

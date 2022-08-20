@@ -1,3 +1,17 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .price {
-  font-family: 'Iceland', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.name {
+  height: 48px;
+  overflow: hidden;
 }
