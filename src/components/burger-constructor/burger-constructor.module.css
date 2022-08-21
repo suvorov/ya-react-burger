@@ -5,7 +5,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: var(--main-panel-width);
-  padding: 0 16px;
 
   --element-height: 80px;
 }
@@ -14,6 +13,15 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  width: 100%;
+  padding: 0 16px;
 }
 
 .ingredients {

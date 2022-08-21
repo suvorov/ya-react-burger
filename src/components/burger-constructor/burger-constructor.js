@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './burger-constructor.module.css';
-import { Button, ConstructorElement, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 
 const BurgerConstructor = ({
   ingredients
@@ -11,30 +11,39 @@ const BurgerConstructor = ({
   return (
     <section className={styles.section}>
       <div className={styles.elements}>
-        <ConstructorElement
-          type="top"
-          isLocked={true}
-          text="Краторная булка N-200i (верх)"
-          price={200}
-          thumbnail={img}
-        />
+        <div className={styles.element}>
+          <DragIcon type="primary" />
+          <ConstructorElement
+            type="top"
+            isLocked={true}
+            text="Краторная булка N-200i (верх)"
+            price={200}
+            thumbnail={img}
+          />
+        </div>
         <div className={styles.ingredients}>
           {ingredients.map(item => (
-            <ConstructorElement
-              key={item._id}
-              text={item.name}
-              price={item.price}
-              thumbnail={item.image}
-            />
+            <div className={styles.element}>
+              <DragIcon type="primary" />
+              <ConstructorElement
+                key={item._id}
+                text={item.name}
+                price={item.price}
+                thumbnail={item.image}
+              />
+            </div>
           ))}
         </div>
-        <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text="Краторная булка N-200i (низ)"
-          price={200}
-          thumbnail={img}
-        />
+        <div className={styles.element}>
+          <DragIcon type="primary" />
+          <ConstructorElement
+            type="bottom"
+            isLocked={true}
+            text="Краторная булка N-200i (низ)"
+            price={200}
+            thumbnail={img}
+          />
+        </div>
       </div>
       <div className={styles.footer}>
         <div className={styles.price}>
