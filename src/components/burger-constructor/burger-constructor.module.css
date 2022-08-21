@@ -23,6 +23,7 @@
   gap: 16px;
   height: calc(var(--element-height)*3);
   width: 100%;
+  composes: scroll from '/src/index.css';
 }
 
 .footer {
