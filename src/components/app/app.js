@@ -47,10 +47,10 @@ const App = () => {
           </Tab>
         </div>
       </div>
-      <div className={styles.content}>
+      <main className={styles.content}>
         <BurgerIngredients ingredients={ingredients} />
-        <BurgerConstructor />
-      </div>
+        <BurgerConstructor ingredients={ingredients} />
+      </main>
     </div>
   );
 };

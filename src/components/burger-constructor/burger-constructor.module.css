@@ -1,8 +1,40 @@
 .section {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: var(--main-panel-width);
+  padding: 0 16px;
+
+  --element-height: 80px;
+}
+
+.elements {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  gap: 16px;
+  height: calc(var(--element-height)*3);
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 66px;
+  width: 100%;
+  margin-top: var(--main-padding);
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
 }
