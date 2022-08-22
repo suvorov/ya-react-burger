@@ -1,12 +1,22 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import styles from './burger-constructor.module.css';
-import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components'
+import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import OrderDetails from '../modals/order-details/order-details';
 
 const BurgerConstructor = ({
   ingredients
 }) => {
+  const [showDetails, setShowDetails] = useState(false);
   const img = 'https://code.s3.yandex.net/react/code/bun-02.png';
   const totalPrice = 610;
+
+  const onShowDetails = () => {
+    setShowDetails(true);
+  };
+
+  const onCloseDetails = () => {
+    setShowDetails(false);
+  };
 
   return (
     <section className={styles.section}>
@@ -23,10 +33,12 @@ const BurgerConstructor = ({
         </div>
         <div className={styles.ingredients}>
           {ingredients.map(item => (
-            <div className={styles.element}>
+            <div
+              key={item._id}
+              className={styles.element}
+            >
               <DragIcon type="primary" />
               <ConstructorElement
-                key={item._id}
                 text={item.name}
                 price={item.price}
                 thumbnail={item.image}
@@ -52,10 +64,11 @@ const BurgerConstructor = ({
           </p>
           <CurrencyIcon type="primary" />
         </div>
-        <Button type="primary" size="large">
+        <Button type="primary" size="large" onClick={onShowDetails}>
           Оформить заказ
         </Button>
       </div>
+      {showDetails && <OrderDetails onClose={onCloseDetails} />}
     </section>
   );
 };

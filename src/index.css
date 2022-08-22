@@ -48,6 +48,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+
 .scroll {
   scrollbar-width: thin;
 }
