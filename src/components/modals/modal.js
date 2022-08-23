@@ -14,9 +14,11 @@ const Modal = React.memo(({
 
   useEffect(() => {
     modalRootEl.appendChild(el);
+    document.body.addEventListener('keydown', onKeyUp);
 
     return () => {
       modalRootEl.removeChild(el);
+      document.body.removeEventListener('keydown', onKeyUp);
     };
   }, []);
 
@@ -26,6 +28,13 @@ const Modal = React.memo(({
 
     // закрываем окно, если клик произошел по фону
     if (clsTarget === styles.modal) onClose();
+  }, []);
+
+  const onKeyUp = React.useCallback((e) => {
+    if (e.key === 'Escape') {
+      e.stopPropagation();
+      onClose();
+    }
   }, []);
 
   return ReactDOM.createPortal((
