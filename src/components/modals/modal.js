@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styles from './modal.module.css';
 import ModalOverlay from './modal-overlay';
@@ -56,5 +57,11 @@ const Modal = React.memo(({
     </>
   ), el);
 });
+
+Modal.propTypes = {
+  title: PropTypes.string,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+};
 
 export default Modal;

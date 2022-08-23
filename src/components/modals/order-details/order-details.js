@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './order-details.module.css';
 import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal';
@@ -20,5 +21,9 @@ const OrderDetails = React.memo(({
     </Modal>
   );
 });
+
+OrderDetails.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default OrderDetails;
