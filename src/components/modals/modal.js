@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './modal.module.css';
 import ModalOverlay from './modal-overlay';
@@ -20,10 +20,18 @@ const Modal = React.memo(({
     };
   }, []);
 
+  const onClick = React.useCallback((e) => {
+    const { target } = e;
+    const clsTarget = target.getAttribute('class');
+
+    // закрываем окно, если клик произошел по фону
+    if (clsTarget === styles.modal) onClose();
+  }, []);
+
   return ReactDOM.createPortal((
     <>
       <ModalOverlay />
-      <div className={styles.modal}>
+      <div className={styles.modal} onClick={onClick}>
         <div className={styles.wrapper}>
           <div className={styles.title}>
             <p className="text text_type_main-large">{title}</p>
