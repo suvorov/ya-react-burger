@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ingredient-details.module.css';
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal';
 
-const IngredientDetails = ({
+const IngredientDetails = React.memo(({
   ingredient,
   onClose,
 }) => {
-
   return (
     <Modal onClose={onClose} title="Детали ингредиента">
       <div className={styles.details}>
@@ -34,6 +32,6 @@ const IngredientDetails = ({
       </div>
     </Modal>
   );
-};
+});
 
 export default IngredientDetails;

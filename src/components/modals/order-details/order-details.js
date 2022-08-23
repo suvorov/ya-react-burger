@@ -1,9 +1,9 @@
-import React, { ReactDOM, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './order-details.module.css';
 import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal';
 
-const OrderDetails = ({
+const OrderDetails = React.memo(({
   onClose
 }) => {
   return (
@@ -19,6 +19,6 @@ const OrderDetails = ({
       </div>
     </Modal>
   );
-};
+});
 
 export default OrderDetails;

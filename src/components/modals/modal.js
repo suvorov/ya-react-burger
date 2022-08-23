@@ -4,7 +4,7 @@ import styles from './modal.module.css';
 import ModalOverlay from './modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const Modal = ({
+const Modal = React.memo(({
   title = '',
   onClose,
   children
@@ -38,6 +38,6 @@ const Modal = ({
       </div>
     </>
   ), el);
-};
+});
 
 export default Modal;

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../modals/order-details/order-details';
 
-const BurgerConstructor = ({
+const BurgerConstructor = React.memo(({
   ingredients
 }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -14,9 +14,9 @@ const BurgerConstructor = ({
     setShowDetails(true);
   };
 
-  const onCloseDetails = () => {
+  const onCloseDetails = useCallback(() => {
     setShowDetails(false);
-  };
+  }, []);
 
   return (
     <section className={styles.section}>
@@ -71,6 +71,6 @@ const BurgerConstructor = ({
       {showDetails && <OrderDetails onClose={onCloseDetails} />}
     </section>
   );
-};
+});
 
 export default BurgerConstructor;
