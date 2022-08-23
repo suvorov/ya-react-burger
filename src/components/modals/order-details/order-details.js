@@ -4,8 +4,7 @@ import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-component
 import Modal from '../modal';
 
 const OrderDetails = ({
-  onClose,
-  children
+  onClose
 }) => {
   return (
     <Modal onClose={onClose}>
