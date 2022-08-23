@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './app.module.css';
+import get from '../../utils/api';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
@@ -11,10 +12,9 @@ const App = () => {
   const [current, setCurrent] = React.useState("one");
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then(data => setIngredients(data.data))
-      .catch(err => console.error(`Error: ${err}`));
+    get(url, (data) => {
+      setIngredients(data.data);
+    })
   }, []);
 
   const onCurrent = () => {
