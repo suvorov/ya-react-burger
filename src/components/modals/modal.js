@@ -7,6 +7,7 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Modal = React.memo(({
   title = '',
+  isOpen = false,
   onClose,
   children
 }) => {
@@ -28,7 +29,7 @@ const Modal = React.memo(({
     };
   }, [bodyEl, onKeyUp]);
 
-  return ReactDOM.createPortal((
+  return isOpen ? ReactDOM.createPortal((
     <>
       <ModalOverlay onClose={onClose} />
       <div className={styles.modal}>
@@ -43,11 +44,12 @@ const Modal = React.memo(({
         </div>
       </div>
     </>
-  ), modalRootEl);
+  ), modalRootEl) : null;
 });
 
 Modal.propTypes = {
   title: PropTypes.string,
+  isOpen: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
 };

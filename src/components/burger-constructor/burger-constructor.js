@@ -1,7 +1,8 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import OrderDetails from '../modals/order-details/order-details';
+import OrderDetails from './order-details/order-details';
+import Modal from '../modals/modal';
 import { ingredientTypes } from '../../utils/types';
 
 const BurgerConstructor = React.memo(({
@@ -36,57 +37,65 @@ const BurgerConstructor = React.memo(({
   }, []);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.elements}>
-        <div className={styles.element}>
-          <ConstructorElement
-            type="top"
-            isLocked={true}
-            text="Краторная булка N-200i (верх)"
-            price={200}
-            thumbnail={img}
-          />
-        </div>
-        <div className={styles.ingredients}>
-          {withoutBuns.map(item => (
-            <div
-              key={item.key}
-              className={styles.element}
-            >
-              <div className={styles.icon}>
-                <DragIcon type="primary" />
+    <>
+      <Modal
+        isOpen={showDetails}
+        onClose={onCloseDetails}
+      >
+        <OrderDetails />
+      </Modal>
+
+      <section className={styles.section}>
+        <div className={styles.elements}>
+          <div className={styles.element}>
+            <ConstructorElement
+              type="top"
+              isLocked={true}
+              text="Краторная булка N-200i (верх)"
+              price={200}
+              thumbnail={img}
+            />
+          </div>
+          <div className={styles.ingredients}>
+            {withoutBuns.map(item => (
+              <div
+                key={item.key}
+                className={styles.element}
+              >
+                <div className={styles.icon}>
+                  <DragIcon type="primary" />
+                </div>
+                <ConstructorElement
+                  text={item.name}
+                  price={item.price}
+                  thumbnail={item.image}
+                />
               </div>
-              <ConstructorElement
-                text={item.name}
-                price={item.price}
-                thumbnail={item.image}
-              />
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className={styles.element}>
+            <ConstructorElement
+              type="bottom"
+              isLocked={true}
+              text="Краторная булка N-200i (низ)"
+              price={200}
+              thumbnail={img}
+            />
+          </div>
         </div>
-        <div className={styles.element}>
-          <ConstructorElement
-            type="bottom"
-            isLocked={true}
-            text="Краторная булка N-200i (низ)"
-            price={200}
-            thumbnail={img}
-          />
+        <div className={styles.footer}>
+          <div className={styles.price}>
+            <p className="text text_type_digits-medium mr-2">
+              {totalPrice}
+            </p>
+            <CurrencyIcon type="primary" />
+          </div>
+          <Button type="primary" size="large" onClick={onShowDetails}>
+            Оформить заказ
+          </Button>
         </div>
-      </div>
-      <div className={styles.footer}>
-        <div className={styles.price}>
-          <p className="text text_type_digits-medium mr-2">
-            {totalPrice}
-          </p>
-          <CurrencyIcon type="primary" />
-        </div>
-        <Button type="primary" size="large" onClick={onShowDetails}>
-          Оформить заказ
-        </Button>
-      </div>
-      {showDetails && <OrderDetails onClose={onCloseDetails} />}
-    </section>
+      </section>
+    </>
   );
 });
 

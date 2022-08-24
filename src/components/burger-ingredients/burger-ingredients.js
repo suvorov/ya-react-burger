@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import IngredientsTitle from './ingredients-title/ingredients-title';
 import IngredientsType from './ingredients-type/ingredients-type';
-import IngredientDetails from '../modals/ingredient-details/ingredient-details';
+import IngredientDetails from './ingredient-details/ingredient-details';
+import Modal from '../modals/modal';
 import { ingredientTypes } from '../../utils/types';
 
 const BurgerIngredients = ({
@@ -12,7 +13,7 @@ const BurgerIngredients = ({
   const [mains, setMains] = React.useState([]);
   const [sauces, setSauces] = React.useState([]);
   const [showDetails, setShowDetails] = useState(false);
-  const [ingredientDetails, setIngredientDetails] = React.useState([]);
+  const [ingredientDetails, setIngredientDetails] = React.useState();
 
   useEffect(() => {
     const bunsData = [];
@@ -48,6 +49,14 @@ const BurgerIngredients = ({
 
   return (
     <>
+      <Modal
+        title="Детали ингредиента"
+        isOpen={showDetails}
+        onClose={onCloseDetails}
+      >
+        <IngredientDetails ingredient={ingredientDetails} />
+      </Modal>
+
       <section className={styles.section}>
         <IngredientsTitle />
         <div className={styles.types}>
@@ -68,9 +77,6 @@ const BurgerIngredients = ({
           />
         </div>
       </section>
-      {showDetails &&
-        <IngredientDetails onClose={onCloseDetails} ingredient={ingredientDetails} />
-      }
     </>
   );
 };
