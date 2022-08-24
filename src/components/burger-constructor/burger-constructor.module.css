@@ -17,22 +17,28 @@
 }
 
 .element {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 8px;
   width: 100%;
-  padding: 0 16px;
 }
 
 .ingredients {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
   gap: 16px;
   height: calc(var(--element-height)*3);
   width: 100%;
+  margin-left: calc(var(--scroll-width)/2);
   composes: scroll from '/src/index.css';
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
 }
 
 .footer {

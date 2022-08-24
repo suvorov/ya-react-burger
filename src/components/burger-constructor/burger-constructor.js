@@ -23,7 +23,6 @@ const BurgerConstructor = React.memo(({
     <section className={styles.section}>
       <div className={styles.elements}>
         <div className={styles.element}>
-          <DragIcon type="primary" />
           <ConstructorElement
             type="top"
             isLocked={true}
@@ -38,7 +37,9 @@ const BurgerConstructor = React.memo(({
               key={item._id}
               className={styles.element}
             >
-              <DragIcon type="primary" />
+              <div className={styles.icon}>
+                <DragIcon type="primary" />
+              </div>
               <ConstructorElement
                 text={item.name}
                 price={item.price}
@@ -48,7 +49,6 @@ const BurgerConstructor = React.memo(({
           ))}
         </div>
         <div className={styles.element}>
-          <DragIcon type="primary" />
           <ConstructorElement
             type="bottom"
             isLocked={true}

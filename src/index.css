@@ -29,6 +29,8 @@
 :root {
   --main-panel-width: 600px;
   --main-padding: 40px;
+  --scroll-width: 8px;
+
   --color-text: #f2f2f3;
   --color-dark: #2f2f37;
   --color-dark-grey: #8585ad;
@@ -58,7 +60,7 @@ body {
 }
 
 .scroll::-webkit-scrollbar {
-  width: 8px;
+  width: var(--scroll-width);
   background-color: var(--color-dark);
 }
 
