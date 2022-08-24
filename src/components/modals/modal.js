@@ -11,44 +11,35 @@ const Modal = React.memo(({
   children
 }) => {
   const modalRootEl = document.getElementById('modal-root');
-
-  useEffect(() => {
-    document.body.addEventListener('keydown', onKeyUp);
-
-    return () => {
-      document.body.removeEventListener('keydown', onKeyUp);
-    };
-  }, []);
-
-  const onClick = React.useCallback((e) => {
-    const { target } = e;
-    const clsTarget = target.getAttribute('class');
-
-    // закрываем окно, если клик произошел по фону
-    if (clsTarget === styles.modal) onClose();
-  }, []);
+  const bodyEl = document.body;
 
   const onKeyUp = React.useCallback((e) => {
     if (e.key === 'Escape') {
       e.stopPropagation();
       onClose();
     }
-  }, []);
+  }, [onClose]);
+
+  useEffect(() => {
+    bodyEl.addEventListener('keydown', onKeyUp);
+
+    return () => {
+      bodyEl.removeEventListener('keydown', onKeyUp);
+    };
+  }, [bodyEl, onKeyUp]);
 
   return ReactDOM.createPortal((
     <>
-      <ModalOverlay />
-      <div className={styles.modal} onClick={onClick}>
-        <div className={styles.wrapper}>
-          <div className={styles.title}>
-            <p className="text text_type_main-large">{title}</p>
-            <div className={styles.close}>
-              <CloseIcon type="primary" onClick={onClose} />
-            </div>
+      <ModalOverlay onClose={onClose} />
+      <div className={styles.modal}>
+        <div className={styles.title}>
+          <p className="text text_type_main-large">{title}</p>
+          <div className={styles.close}>
+            <CloseIcon type="primary" onClick={onClose} />
           </div>
-          <div className={styles.content}>
-            {children}
-          </div>
+        </div>
+        <div className={styles.content}>
+          {children}
         </div>
       </div>
     </>

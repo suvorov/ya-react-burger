@@ -10,7 +10,7 @@ const IngredientCard = React.memo(({
 }) => {
   const onDetails = useCallback(() => {
     onShowDetails(ingredient);
-  }, []);
+  }, [ingredient, onShowDetails]);
 
   return (
     <div className={styles.card} onClick={onDetails}>
