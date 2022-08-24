@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './burger-ingredients.module.css';
+import IngredientsTitle from './ingredients-title/ingredients-title';
 import IngredientsType from './ingredients-type/ingredients-type';
 import IngredientDetails from '../modals/ingredient-details/ingredient-details';
 
@@ -48,21 +49,24 @@ const BurgerIngredients = ({
   return (
     <>
       <section className={styles.section}>
-        <IngredientsType
-          title='Булки'
-          ingredients={buns}
-          onShowDetails={onShowDetails}
-        />
-        <IngredientsType
-          title='Соусы'
-          ingredients={sauces}
-          onShowDetails={onShowDetails}
-        />
-        <IngredientsType
-          title='Начинки'
-          ingredients={mains}
-          onShowDetails={onShowDetails}
-        />
+        <IngredientsTitle />
+        <div className={styles.types}>
+          <IngredientsType
+            title='Булки'
+            ingredients={buns}
+            onShowDetails={onShowDetails}
+          />
+          <IngredientsType
+            title='Соусы'
+            ingredients={sauces}
+            onShowDetails={onShowDetails}
+          />
+          <IngredientsType
+            title='Начинки'
+            ingredients={mains}
+            onShowDetails={onShowDetails}
+          />
+        </div>
       </section>
       {showDetails &&
         <IngredientDetails onClose={onCloseDetails} ingredient={ingredientDetails} />

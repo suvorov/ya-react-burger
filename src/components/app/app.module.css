@@ -1,33 +1,17 @@
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
+  overflow: hidden;
+  height: calc(100vh - var(--main-padding));
   width: 100%;
   padding: var(--main-padding);
   background-color: var(--color-bg);
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  width: calc(var(--main-panel-width)*2 + var(--main-padding));
-  margin-bottom: var(--main-padding);
-}
-
-.tabs {
-  display: flex;
-  width: var(--main-panel-width);
-}
-
-.tabs > div {
-  flex: 1;
-}
-
 .content {
   display: flex;
-  overflow: auto;
   column-gap: var(--main-padding);
   width: calc(var(--main-panel-width)*2 + var(--main-padding));
   height: 100%;
