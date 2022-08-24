@@ -11,14 +11,11 @@ const Modal = React.memo(({
   children
 }) => {
   const modalRootEl = document.getElementById('modal-root');
-  const el = document.createElement('div');
 
   useEffect(() => {
-    modalRootEl.appendChild(el);
     document.body.addEventListener('keydown', onKeyUp);
 
     return () => {
-      modalRootEl.removeChild(el);
       document.body.removeEventListener('keydown', onKeyUp);
     };
   }, []);
@@ -55,7 +52,7 @@ const Modal = React.memo(({
         </div>
       </div>
     </>
-  ), el);
+  ), modalRootEl);
 });
 
 Modal.propTypes = {
