@@ -30,7 +30,7 @@
   flex-wrap: wrap;
   overflow: auto;
   gap: 16px;
-  height: calc(var(--element-height)*3);
+  height: calc(var(--element-height)*4);
   width: 100%;
   margin-left: calc(var(--scroll-width)/2);
   composes: scroll from '/src/index.css';

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../modals/order-details/order-details';
@@ -8,8 +8,24 @@ const BurgerConstructor = React.memo(({
   ingredients
 }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const [withoutBuns, setWithoutBuns] = useState([]);
   const img = 'https://code.s3.yandex.net/react/code/bun-02.png';
   const totalPrice = 610;
+
+  useEffect(() => {
+    const withoutBuns = ingredients.reduce((prev, cur) => {
+      if (cur.type !== 'bun') {
+        prev.push({
+          ...cur,
+          key: crypto.randomUUID(),
+        });
+      }
+
+      return prev;
+    }, []);
+
+    setWithoutBuns(withoutBuns);
+  }, [ingredients]);
 
   const onShowDetails = () => {
     setShowDetails(true);
@@ -32,9 +48,9 @@ const BurgerConstructor = React.memo(({
           />
         </div>
         <div className={styles.ingredients}>
-          {ingredients.map(item => (
+          {withoutBuns.map(item => (
             <div
-              key={item._id}
+              key={item.key}
               className={styles.element}
             >
               <div className={styles.icon}>
