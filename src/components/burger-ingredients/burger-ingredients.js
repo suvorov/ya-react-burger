@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './burger-ingredients.module.css';
 import IngredientsTitle from './ingredients-title/ingredients-title';
 import IngredientsType from './ingredients-type/ingredients-type';
 import IngredientDetails from '../modals/ingredient-details/ingredient-details';
+import { ingredientTypes } from '../../utils/types';
 
 const BurgerIngredients = ({
   ingredients
@@ -76,21 +76,7 @@ const BurgerIngredients = ({
 };
 
 BurgerIngredients.propTypes = {
-  ingredients: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
-      proteins: PropTypes.number.isRequired,
-      fat: PropTypes.number.isRequired,
-      carbohydrates: PropTypes.number.isRequired,
-      calories: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      image_mobile: PropTypes.string.isRequired,
-      image_large: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  ingredients: ingredientTypes,
 };
 
 export default BurgerIngredients;

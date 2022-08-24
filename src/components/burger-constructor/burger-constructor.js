@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../modals/order-details/order-details';
+import { ingredientTypes } from '../../utils/types';
 
 const BurgerConstructor = React.memo(({
   ingredients
@@ -75,21 +75,7 @@ const BurgerConstructor = React.memo(({
 });
 
 BurgerConstructor.propTypes = {
-  ingredients: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      type: PropTypes.oneOf(['bun', 'main', 'sauce']).isRequired,
-      proteins: PropTypes.number.isRequired,
-      fat: PropTypes.number.isRequired,
-      carbohydrates: PropTypes.number.isRequired,
-      calories: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      image_mobile: PropTypes.string.isRequired,
-      image_large: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  ingredients: ingredientTypes,
 };
 
 export default BurgerConstructor;
