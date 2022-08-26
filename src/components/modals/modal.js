@@ -5,15 +5,15 @@ import styles from './modal.module.css';
 import ModalOverlay from './modal-overlay';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
+const modalRootEl = document.getElementById('modal-root');
+const bodyEl = document.body;
+
 const Modal = React.memo(({
   title = '',
   isOpen = false,
   onClose,
   children
 }) => {
-  const modalRootEl = document.getElementById('modal-root');
-  const bodyEl = document.body;
-
   const onKeyUp = React.useCallback((e) => {
     if (e.key === 'Escape') {
       e.stopPropagation();
@@ -27,7 +27,7 @@ const Modal = React.memo(({
     return () => {
       bodyEl.removeEventListener('keydown', onKeyUp);
     };
-  }, [bodyEl, onKeyUp]);
+  }, [onKeyUp]);
 
   return isOpen ? ReactDOM.createPortal((
     <>
