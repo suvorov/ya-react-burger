@@ -4,7 +4,7 @@ import IngredientsTitle from './ingredients-title/ingredients-title';
 import IngredientsType from './ingredients-type/ingredients-type';
 import IngredientDetails from './ingredient-details/ingredient-details';
 import Modal from '../modals/modal';
-import { ingredientTypes } from '../../utils/types';
+import { ingredientsArrayType } from '../../utils/types';
 
 const BurgerIngredients = ({
   ingredients
@@ -82,7 +82,7 @@ const BurgerIngredients = ({
 };
 
 BurgerIngredients.propTypes = {
-  ingredients: ingredientTypes,
+  ingredients: ingredientsArrayType,
 };
 
 export default BurgerIngredients;

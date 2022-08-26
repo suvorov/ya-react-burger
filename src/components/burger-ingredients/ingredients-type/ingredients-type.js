@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ingredients-type.module.css';
 import IngredientCard from './ingredient-card/ingredient-card';
-import { ingredientTypes } from '../../../utils/types';
+import { ingredientsArrayType } from '../../../utils/types';
 
 const IngredientsType = React.memo(({
   title,
@@ -30,7 +30,7 @@ const IngredientsType = React.memo(({
 IngredientsType.propTypes = {
   title: PropTypes.string.isRequired,
   onShowDetails: PropTypes.func.isRequired,
-  ingredients: ingredientTypes,
+  ingredients: ingredientsArrayType,
 };
 
 

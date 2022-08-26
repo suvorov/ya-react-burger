@@ -3,7 +3,7 @@ import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from './order-details/order-details';
 import Modal from '../modals/modal';
-import { ingredientTypes } from '../../utils/types';
+import { ingredientsArrayType } from '../../utils/types';
 
 const BurgerConstructor = React.memo(({
   ingredients
@@ -100,7 +100,7 @@ const BurgerConstructor = React.memo(({
 });
 
 BurgerConstructor.propTypes = {
-  ingredients: ingredientTypes,
+  ingredients: ingredientsArrayType,
 };
 
 export default BurgerConstructor;
