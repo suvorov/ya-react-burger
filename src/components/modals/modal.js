@@ -14,20 +14,21 @@ const Modal = React.memo(({
   onClose,
   children
 }) => {
-  const onKeyUp = React.useCallback((e) => {
-    if (e.key === 'Escape') {
-      e.stopPropagation();
-      onClose();
-    }
-  }, [onClose]);
-
   useEffect(() => {
-    bodyEl.addEventListener('keydown', onKeyUp);
+    const closeByEscape = (e) => {
+      if(e.key === 'Escape') {
+        onClose();
+      }
+    }
 
-    return () => {
-      bodyEl.removeEventListener('keydown', onKeyUp);
-    };
-  }, [onKeyUp]);
+    if (isOpen) {
+      bodyEl.addEventListener('keydown', closeByEscape);
+
+      return () => {
+        bodyEl.removeEventListener('keydown', closeByEscape);
+      };
+    }
+  }, [isOpen, onClose]);
 
   return isOpen ? ReactDOM.createPortal((
     <>
