@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--color-bg2);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--main-panel-width)*2 + var(--main-padding));
+}
+
+.wrapper > div {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.left_links {
+  column-gap: 40px;
+  justify-content: flex-start;
+}
+
+.logo {
+  justify-content: center;
+}
+
+.profile {
+  justify-content: flex-end;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  column-gap: 9px;
+  padding: 16px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-text);
+}

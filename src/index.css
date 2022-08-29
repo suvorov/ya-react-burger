@@ -1,13 +1,69 @@
-body {
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-Light.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/jetbrainsmono/JetBrainsMono-LightItalic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/iceland/Iceland-Regular.ttf") format("ttf");
+}
+
+:root {
+  --main-panel-width: 600px;
+  --main-padding: 40px;
+  --scroll-width: 8px;
+
+  --color-text: #f2f2f3;
+  --color-dark: #2f2f37;
+  --color-dark-grey: #8585ad;
+  --color-bg: #131316;
+  --color-bg2: #1c1c21;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+}
+
+body {
+  font-family: 'JetBrains Mono', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#modal-root {
+  position: relative;
+  z-index: 999;
+}
+
+.scroll {
+  scrollbar-width: thin;
+}
+
+.scroll::-webkit-scrollbar {
+  width: var(--scroll-width);
+  background-color: var(--color-dark);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-grey);
 }

@@ -1,0 +1,18 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  height: calc(100vh - var(--main-padding));
+  width: 100%;
+  padding: var(--main-padding);
+  background-color: var(--color-bg);
+}
+
+.content {
+  display: flex;
+  column-gap: var(--main-padding);
+  width: calc(var(--main-panel-width)*2 + var(--main-padding));
+  height: 100%;
+}

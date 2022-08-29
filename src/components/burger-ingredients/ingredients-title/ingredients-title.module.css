@@ -1,0 +1,15 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  width: calc(var(--main-panel-width)*2 + var(--main-padding));
+  margin-bottom: var(--main-padding);
+}
+
+.tabs {
+  display: flex;
+  width: var(--main-panel-width);
+}
+
+.tabs > div {
+  flex: 1;
+}
