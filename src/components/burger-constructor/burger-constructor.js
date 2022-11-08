@@ -10,7 +10,19 @@ const BurgerConstructor = React.memo(() => {
   const [bun, setBun] = useState({});
   const [showDetails, setShowDetails] = useState(false);
   const [withoutBuns, setWithoutBuns] = useState([]);
-  const totalPrice = 610;
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const sumPrice = () => {
+    let sum = 0;
+
+    withoutBuns.forEach((bun) => {
+      sum += bun.price;
+    });
+
+    sum += bun.price * 2;
+
+    return sum;
+  };
 
   useEffect(() => {
     const withoutBuns = ingredients.reduce((prev, cur) => {
@@ -44,6 +56,7 @@ const BurgerConstructor = React.memo(() => {
     }
 
     setWithoutBuns(withoutBuns);
+    setTotalPrice(sumPrice());
   }, [ingredients]);
 
   const onShowDetails = () => {
