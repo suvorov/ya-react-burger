@@ -15,14 +15,22 @@ const BurgerConstructor = React.memo(() => {
   const [withoutBuns, setWithoutBuns] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const sumPrice = () => {
+  /**
+   * Считает сумму заказа
+   * @param {Object} ingredients
+   * @param {Object} bun
+   * @return {Number}
+   */
+  const sumPrice = (ingredients, bun) => {
     let sum = 0;
 
-    withoutBuns.forEach((bun) => {
-      sum += bun.price;
-    });
+    if (ingredients.length) {
+      ingredients.forEach((item) => {
+        sum += item.price;
+      });
 
-    sum += bun.price * 2;
+      sum += bun.price * 2;
+    }
 
     return sum;
   };
@@ -51,15 +59,17 @@ const BurgerConstructor = React.memo(() => {
       return prev;
     }, []);
 
+    let bun = {};
+
     if (buns.length) {
       // пока что выбираем рандомную булку для заказа
       const index = Math.round(Math.random() * (buns.length - 1));
-      const rndBun = buns[index];
-      setBun(rndBun);
+      bun = buns[index];
     }
 
     setWithoutBuns(withoutBuns);
-    setTotalPrice(sumPrice());
+    setBun(bun);
+    setTotalPrice(sumPrice(withoutBuns, bun));
   }, [ingredients]);
 
   const onShowDetails = () => {
@@ -127,9 +137,7 @@ const BurgerConstructor = React.memo(() => {
         </div>
         <div className={styles.footer}>
           <div className={styles.price}>
-            <p className="text text_type_digits-medium mr-2">
-              {totalPrice}
-            </p>
+            <p className="text text_type_digits-medium mr-2">{totalPrice}</p>
             <CurrencyIcon type="primary" />
           </div>
           <Button type="primary" size="large" onClick={onShowDetails}>
