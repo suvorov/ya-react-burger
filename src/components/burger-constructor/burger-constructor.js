@@ -1,13 +1,12 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from './order-details/order-details';
 import Modal from '../modals/modal';
-import { ingredientsArrayType } from '../../utils/types';
+import { IngredientsContext } from '../app/app';
 
-const BurgerConstructor = React.memo(({
-  ingredients
-}) => {
+const BurgerConstructor = React.memo(() => {
+  const [ingredients] = useContext(IngredientsContext);
   const [showDetails, setShowDetails] = useState(false);
   const [withoutBuns, setWithoutBuns] = useState([]);
   const img = 'https://code.s3.yandex.net/react/code/bun-02.png';
@@ -98,9 +97,5 @@ const BurgerConstructor = React.memo(({
     </>
   );
 });
-
-BurgerConstructor.propTypes = {
-  ingredients: ingredientsArrayType,
-};
 
 export default BurgerConstructor;
