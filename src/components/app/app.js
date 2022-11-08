@@ -9,7 +9,6 @@ export const IngredientsContext = createContext();
 
 const App = () => {
   const url = 'https://norma.nomoreparties.space/api/ingredients';
-  //const [ingredients, setIngredients] = useState([]);
   const ingredientsState = useState([]);
 
   useEffect(() => {

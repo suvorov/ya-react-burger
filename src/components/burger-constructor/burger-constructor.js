@@ -4,10 +4,13 @@ import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktiku
 import OrderDetails from './order-details/order-details';
 import Modal from '../modals/modal';
 import { IngredientsContext } from '../app/app';
+import { jsonPost } from '../../utils/api';
 
 const BurgerConstructor = React.memo(() => {
+  const ordersUrl = 'https://norma.nomoreparties.space/api/orders';
   const [ingredients] = useContext(IngredientsContext);
   const [bun, setBun] = useState({});
+  const [orderId, setOrderId] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [withoutBuns, setWithoutBuns] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -60,7 +63,15 @@ const BurgerConstructor = React.memo(() => {
   }, [ingredients]);
 
   const onShowDetails = () => {
-    setShowDetails(true);
+    const ids = withoutBuns.map(item => item._id);
+
+    jsonPost(ordersUrl, { ingredients: ids }, (data) => {
+      const { success, order } = data;
+      if (success) {
+        setOrderId(order.number);
+        setShowDetails(true);
+      }
+    })
   };
 
   const onCloseDetails = useCallback(() => {
@@ -73,7 +84,7 @@ const BurgerConstructor = React.memo(() => {
         isOpen={showDetails}
         onClose={onCloseDetails}
       >
-        <OrderDetails />
+        <OrderDetails orderId={orderId} />
       </Modal>
 
       <section className={styles.section}>
