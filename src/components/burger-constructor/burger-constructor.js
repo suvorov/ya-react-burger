@@ -7,9 +7,9 @@ import { IngredientsContext } from '../app/app';
 
 const BurgerConstructor = React.memo(() => {
   const [ingredients] = useContext(IngredientsContext);
+  const [bun, setBun] = useState({});
   const [showDetails, setShowDetails] = useState(false);
   const [withoutBuns, setWithoutBuns] = useState([]);
-  const img = 'https://code.s3.yandex.net/react/code/bun-02.png';
   const totalPrice = 610;
 
   useEffect(() => {
@@ -23,6 +23,25 @@ const BurgerConstructor = React.memo(() => {
 
       return prev;
     }, []);
+
+    // данные о булках
+    const buns = ingredients.reduce((prev, cur) => {
+      if (cur.type === 'bun') {
+        prev.push({
+          ...cur,
+          key: crypto.randomUUID(),
+        });
+      }
+
+      return prev;
+    }, []);
+
+    if (buns.length) {
+      // пока что выбираем рандомную булку для заказа
+      const index = Math.round(Math.random() * (buns.length - 1));
+      const rndBun = buns[index];
+      setBun(rndBun);
+    }
 
     setWithoutBuns(withoutBuns);
   }, [ingredients]);
@@ -50,9 +69,9 @@ const BurgerConstructor = React.memo(() => {
             <ConstructorElement
               type="top"
               isLocked={true}
-              text="Краторная булка N-200i (верх)"
-              price={200}
-              thumbnail={img}
+              text={bun.name + ' (верх)'}
+              price={bun.price}
+              thumbnail={bun.image}
             />
           </div>
           <div className={styles.ingredients}>
@@ -76,9 +95,9 @@ const BurgerConstructor = React.memo(() => {
             <ConstructorElement
               type="bottom"
               isLocked={true}
-              text="Краторная булка N-200i (низ)"
-              price={200}
-              thumbnail={img}
+              text={bun.name + ' (низ)'}
+              price={bun.price}
+              thumbnail={bun.image}
             />
           </div>
         </div>
