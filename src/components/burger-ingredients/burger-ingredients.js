@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styles from './burger-ingredients.module.css';
 import IngredientsTitle from './ingredients-title/ingredients-title';
 import IngredientsType from './ingredients-type/ingredients-type';
 import IngredientDetails from './ingredient-details/ingredient-details';
 import Modal from '../modals/modal';
-import { ingredientsArrayType } from '../../utils/types';
+import { IngredientsContext } from '../app/app';
 
-const BurgerIngredients = ({
-  ingredients
-}) => {
+const BurgerIngredients = () => {
+  const [ingredients] = useContext(IngredientsContext);
   const [buns, setBuns] = React.useState([]);
   const [mains, setMains] = React.useState([]);
   const [sauces, setSauces] = React.useState([]);
@@ -79,10 +78,6 @@ const BurgerIngredients = ({
       </section>
     </>
   );
-};
-
-BurgerIngredients.propTypes = {
-  ingredients: ingredientsArrayType,
 };
 
 export default BurgerIngredients;

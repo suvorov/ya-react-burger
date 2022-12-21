@@ -1,17 +1,39 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 import styles from './burger-constructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from './order-details/order-details';
 import Modal from '../modals/modal';
-import { ingredientsArrayType } from '../../utils/types';
+import { IngredientsContext } from '../app/app';
+import { jsonPost } from '../../utils/api';
 
-const BurgerConstructor = React.memo(({
-  ingredients
-}) => {
+const BurgerConstructor = React.memo(() => {
+  const ordersUrl = 'https://norma.nomoreparties.space/api/orders';
+  const [ingredients] = useContext(IngredientsContext);
+  const [bun, setBun] = useState({});
+  const [orderId, setOrderId] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [withoutBuns, setWithoutBuns] = useState([]);
-  const img = 'https://code.s3.yandex.net/react/code/bun-02.png';
-  const totalPrice = 610;
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  /**
+   * Считает сумму заказа
+   * @param {Object} ingredients
+   * @param {Object} bun
+   * @return {Number}
+   */
+  const sumPrice = (ingredients, bun) => {
+    let sum = 0;
+
+    if (ingredients.length) {
+      ingredients.forEach((item) => {
+        sum += item.price;
+      });
+
+      sum += bun.price * 2;
+    }
+
+    return sum;
+  };
 
   useEffect(() => {
     const withoutBuns = ingredients.reduce((prev, cur) => {
@@ -25,11 +47,41 @@ const BurgerConstructor = React.memo(({
       return prev;
     }, []);
 
+    // данные о булках
+    const buns = ingredients.reduce((prev, cur) => {
+      if (cur.type === 'bun') {
+        prev.push({
+          ...cur,
+          key: crypto.randomUUID(),
+        });
+      }
+
+      return prev;
+    }, []);
+
+    let bun = {};
+
+    if (buns.length) {
+      // пока что выбираем рандомную булку для заказа
+      const index = Math.round(Math.random() * (buns.length - 1));
+      bun = buns[index];
+    }
+
     setWithoutBuns(withoutBuns);
+    setBun(bun);
+    setTotalPrice(sumPrice(withoutBuns, bun));
   }, [ingredients]);
 
   const onShowDetails = () => {
-    setShowDetails(true);
+    const ids = withoutBuns.map(item => item._id);
+
+    jsonPost(ordersUrl, { ingredients: ids }, (data) => {
+      const { success, order } = data;
+      if (success) {
+        setOrderId(order.number);
+        setShowDetails(true);
+      }
+    })
   };
 
   const onCloseDetails = useCallback(() => {
@@ -42,7 +94,7 @@ const BurgerConstructor = React.memo(({
         isOpen={showDetails}
         onClose={onCloseDetails}
       >
-        <OrderDetails />
+        <OrderDetails orderId={orderId} />
       </Modal>
 
       <section className={styles.section}>
@@ -51,9 +103,9 @@ const BurgerConstructor = React.memo(({
             <ConstructorElement
               type="top"
               isLocked={true}
-              text="Краторная булка N-200i (верх)"
-              price={200}
-              thumbnail={img}
+              text={bun.name + ' (верх)'}
+              price={bun.price}
+              thumbnail={bun.image}
             />
           </div>
           <div className={styles.ingredients}>
@@ -77,17 +129,15 @@ const BurgerConstructor = React.memo(({
             <ConstructorElement
               type="bottom"
               isLocked={true}
-              text="Краторная булка N-200i (низ)"
-              price={200}
-              thumbnail={img}
+              text={bun.name + ' (низ)'}
+              price={bun.price}
+              thumbnail={bun.image}
             />
           </div>
         </div>
         <div className={styles.footer}>
           <div className={styles.price}>
-            <p className="text text_type_digits-medium mr-2">
-              {totalPrice}
-            </p>
+            <p className="text text_type_digits-medium mr-2">{totalPrice}</p>
             <CurrencyIcon type="primary" />
           </div>
           <Button type="primary" size="large" onClick={onShowDetails}>
@@ -98,9 +148,5 @@ const BurgerConstructor = React.memo(({
     </>
   );
 });
-
-BurgerConstructor.propTypes = {
-  ingredients: ingredientsArrayType,
-};
 
 export default BurgerConstructor;
